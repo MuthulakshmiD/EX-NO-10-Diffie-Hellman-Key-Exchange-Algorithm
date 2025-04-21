@@ -20,10 +20,42 @@ To Implement Diffie Hellman Key Exchange Algorithm
 
 ## Program:
 
+Name:Muthulakshmi D
+Reg:212223040122
 
+```
+def mod_exp(base, exp, mod):
+    result = 1
+    while exp > 0:
+        if exp % 2 == 1:
+            result = (result * base) % mod
+        exp = exp >> 1  # equivalent to exp // 2
+        base = (base * base) % mod
+    return result
+
+# User inputs
+P = int(input("Enter the value of P: "))
+print(f"The value of P: {P}")
+
+G = int(input("Enter the value of G (Primitive root of P): "))
+print(f"The value of G: {G}\n")
+
+a = int(input("Enter the private key for Alice (a): "))
+x = mod_exp(G, a, P)
+
+b = int(input("Enter the private key for Bob (b): "))
+y = mod_exp(G, b, P)
+
+ka = mod_exp(y, a, P)  # Alice computes shared key
+kb = mod_exp(x, b, P)  # Bob computes shared key
+
+print(f"\nShared secret key for Alice : {ka}")
+print(f"Shared secret key for Bob   : {kb}")
+```
 
 ## Output:
 
+![image](https://github.com/user-attachments/assets/04aff701-c087-482f-8a69-b9efd51e8932)
 
 
 ## Result:
